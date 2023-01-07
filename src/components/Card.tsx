@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedStyle,
@@ -87,11 +88,41 @@ export const Card = ({ width, height }: Props) => {
             backgroundColor: 'black',
             position: 'absolute',
             borderRadius: 18,
-            zIndex: 999
+            zIndex: 999,
+            flexDirection: 'row',
+            alignItems: 'flex-end',
+            padding: 20
           },
           animatedCardStyle
         ]}
-      />
+      >
+        <View style={styles.circle} />
+        <View style={styles.infoContainer}>
+          <View style={styles.infoRect} />
+          <View style={styles.infoRect} />
+        </View>
+      </Animated.View>
     </GestureDetector>
   );
 };
+
+const styles = StyleSheet.create({
+  circle: {
+    height: 70,
+    width: 70,
+    borderRadius: 35,
+    marginRight: 10,
+    backgroundColor: '#505050'
+  },
+  infoContainer: {
+    height: 70,
+    justifyContent: 'space-between'
+  },
+  infoRect: {
+    height: 30,
+    width: 80,
+    borderRadius: 10,
+    marginRight: 10,
+    backgroundColor: '#505050'
+  }
+});
